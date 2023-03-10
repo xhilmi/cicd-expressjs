@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: project-express-rest-api-deployment
+  labels:
+    app: project-express-rest-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: project-express-rest-api
+  template:
+    metadata:
+      labels:
+        app: project-express-rest-api
+    spec:
+      tolerations:
+      - key: "node-role.kubernetes.io/control-plane"
+        operator: "Exists"
+        effect: "NoSchedule"
+      containers:
+      - name: project-express-rest-api
+        image: hilmiafifi/project-express-rest-api:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: NODE_ENV
+          value: "production"
