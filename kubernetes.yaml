@@ -1,26 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: project-express-rest-api
+  name: expressjs-restapi
   labels:
-    app: project-express-rest-api
+    app: expressjs-restapi
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: project-express-rest-api
+      app: expressjs-restapi
   template:
     metadata:
       labels:
-        app: project-express-rest-api
+        app: expressjs-restapi
     spec:
       tolerations:
       - key: "node-role.kubernetes.io/control-plane"
         operator: "Exists"
         effect: "NoSchedule"
       containers:
-        - name: project-express-rest-api
-          image: hilmiafifi/project-express-rest-api:latest
+        - name: expressjs-restapi
+          image: hilmiafifi/expressjs-restapi:latest
           ports:
             - containerPort: 8000
           env:
@@ -29,17 +29,17 @@ spec:
 #      imagePullSecrets:
 #        - name: hilmiafifi
 #      restartPolicy: Always
-#  namespace: project-express-rest-api-kubernetes-namespace
+#  namespace: expressjs-restapi-kubernetes-namespace
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: project-express-rest-api
+  name: expressjs-restapi
   labels:
-    app: project-express-rest-api
+    app: expressjs-restapi
 spec:
   selector:
-    app: project-express-rest-api
+    app: expressjs-restapi
   ports:
     - name: http
       protocol: TCP

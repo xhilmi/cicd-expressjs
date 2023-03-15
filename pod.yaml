@@ -1,17 +1,17 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: project-express-rest-api-pod
+  name: expressjs-restapi-pod
   labels:
-    app: project-express-rest-api
+    app: expressjs-restapi
 spec:
   tolerations:
   - key: "node-role.kubernetes.io/control-plane"
     operator: "Exists"
     effect: "NoSchedule"
   containers:
-  - name: project-express-rest-api
-    image: hilmiafifi/project-express-rest-api:latest
+  - name: expressjs-restapi
+    image: hilmiafifi/expressjs-restapi:latest
     ports:
     - containerPort: 8000
     env:

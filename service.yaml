@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: project-express-rest-api-service
+  name: expressjs-restapi-service
 spec:
   selector:
-    app: project-express-rest-api
+    app: expressjs-restapi
   ports:
     - name: http
       protocol: TCP
